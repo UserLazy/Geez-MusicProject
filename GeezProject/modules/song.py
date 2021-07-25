@@ -218,7 +218,6 @@ def time_formatter(milliseconds: int) -> str:
     return tmp[:-2]
 
  ydl_opts = {
-        'outtmpl': os.path.join("temp_music_dir", '%(title)s.%(ext)s'),
         'prefer_ffmpeg': True,
         'format': 'bestaudio/best',
         'postprocessors': [
