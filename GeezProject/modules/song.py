@@ -217,19 +217,19 @@ def time_formatter(milliseconds: int) -> str:
     )
     return tmp[:-2]
 
-
-ydl_opts = {
-    "format": "bestaudio/best",
-    "writethumbnail": True,
-    "postprocessors": [
-        {
-            "key": "FFmpegExtractAudio",
-            "preferredcodec": "mp3",
-            "preferredquality": "320",
-        }
-    ],
-}
-
+ ydl_opts = {
+        'outtmpl': os.path.join("temp_music_dir", '%(title)s.%(ext)s'),
+        'prefer_ffmpeg': True,
+        'format': 'bestaudio/best',
+        'postprocessors': [
+            {
+                'key': 'FFmpegExtractAudio',
+                'preferredcodec': 'mp3',
+                'preferredquality': '320',
+            },
+            {'key': 'FFmpegMetadata'}
+        ]
+    }
 
 def get_file_extension_from_url(url):
     url_path = urlparse(url).path
